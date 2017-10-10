@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "2.1.4",
+    "@types/es6-promise": "0.0.33",
     "typescript": "2.3.4"
   },
   "description": "An Ionic project",

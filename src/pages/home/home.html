@@ -15,4 +15,18 @@
 
 <ion-content padding>
 
+    <ion-item>
+  		<ion-label floating>Email Address</ion-label>
+    	<ion-input type="text" [(ngModel)]="universeItem.universeName" ></ion-input>
+  	</ion-item>
+
+    <button ion-button color="twitter" block outline (click)="addUniverseItem(universeItem)">Create Universe</button>
+
+
+	<ion-list>
+		<ion-item *ngFor=" let item of universeListRef$ | async ">
+			<h2>Universe Name : {{item.universeName}}</h2>
+		</ion-item>
+	</ion-list>
+
 </ion-content>

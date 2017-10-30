@@ -7,7 +7,9 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>
+    Home {{getUser()}}
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -26,6 +28,13 @@
 	<ion-list>
 		<ion-item *ngFor=" let item of universeListRef$ | async ">
 			<h2>Universe Name : {{item.universeName}}</h2>
+		</ion-item>
+		<ion-item *ngFor=" let item of universeOnlyListRef$ | async ">
+			<h2>Universe Only Name : {{item.Name}}</h2>
+			<h3>Id : {{item.Id}} </h3>
+			<h3 *ngFor= "let item of item.UniverseUserList">
+			Pseudo : {{item.Pseudo}} 
+		    </h3>
 		</ion-item>
 	</ion-list>
 

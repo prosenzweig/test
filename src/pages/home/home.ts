@@ -22,18 +22,24 @@ import { UniverseItem } from '../../models/universe/universe.interface';
 
 export class HomePage {
 
-  arrData = []
-
   // Creating a new object
   // we use this object in the HTML page 
   universeItem = {} as UniverseItem;
 
   // Use for create a universe
   universeItemRef$: FirebaseListObservable<UniverseItem[]>
+
+  //Test
+  universeOnlyItemRef$: FirebaseListObservable<UniverseItem[]>
   
   //Use for list all universe
   universeListRef$: FirebaseListObservable<UniverseItem[]>
 
+  //test
+  universeOnlyListRef$: FirebaseListObservable<UniverseItem[]>
+  
+  //Auth
+  whoAmI: string[];
 
   constructor(
     private afAuth: AngularFireAuth, 
@@ -42,17 +48,23 @@ export class HomePage {
   	public navCtrl: NavController, 
     public navParams: NavParams) {
 
-    this.afData.list("/Universe/").subscribe( _data => {
-       this.arrData = _data;
-       console.log(this.arrData);
-    });
+    this.afAuth.authState.subscribe(auth => console.log(auth));
 
+
+    //Permet d'accéder en haut de l'arbre
     this.universeItemRef$ = this.afData.list('Universe-list');
 
     this.universeListRef$ = this.afData.list('Universe-list');
     this.universeListRef$.subscribe(x => console.log(x));
 
+    // Test avec Universe seulement
+    this.universeOnlyItemRef$ = this.afData.list('/Universe/');
+
+    this.universeOnlyListRef$ = this.afData.list('/Universe/');
+    this.universeOnlyListRef$.subscribe(x => console.log(x));    
+
     }
+ 
 
   addUniverseItem(universeItem: UniverseItem){
     this.universeItemRef$.push({
@@ -64,10 +76,21 @@ export class HomePage {
 
   }
 
-  getItems() {
+  /*getItems() {
     return this.afData.list('/Universe/');
+  }*/
+
+  getUser(){
+    var user = this.afAuth.auth['currentUser']['email'];
+    if( user != null){
+    console.log(user);
+    return (user);
+    }
+    return "bob";
   }
 
+
+  //Verifier la connection quand on arrive sur la home page
   ionViewDidLoad() {
   	// Verification is the Login succeed
   	this.afAuth.authState.subscribe(data => {

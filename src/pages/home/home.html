@@ -8,8 +8,17 @@
 
   <ion-navbar>
     <ion-title>
-    Home {{getUser()}}
+    Home {{whoAmI}}
     </ion-title>
+
+  <ion-buttons end>
+  	<button ion-button icon-only 
+  	(click)="NavigateToAddUniversePage()">
+  		<ion-icon name="add"></ion-icon>
+  	</button>
+  </ion-buttons>
+
+
   </ion-navbar>
 
 </ion-header>
@@ -17,18 +26,16 @@
 
 <ion-content padding>
 
-    <ion-item>
-  		<ion-label floating>Email Address</ion-label>
-    	<ion-input type="text" [(ngModel)]="universeItem.universeName" ></ion-input>
-  	</ion-item>
-
-    <button ion-button color="twitter" block outline (click)="addUniverseItem(universeItem)">Create Universe</button>
-
-
 	<ion-list>
+		<h1>
+			Universe-List
+		</h1>
 		<ion-item *ngFor=" let item of universeListRef$ | async ">
 			<h2>Universe Name : {{item.universeName}}</h2>
 		</ion-item>
+		<h1>
+			/Universe/
+		</h1>
 		<ion-item *ngFor=" let item of universeOnlyListRef$ | async ">
 			<h2>Universe Only Name : {{item.Name}}</h2>
 			<h3>Id : {{item.Id}} </h3>

@@ -7,6 +7,9 @@ import { AngularFireDatabase, FirebaseListObservable  } from 'angularfire2/datab
 
 import { UniverseItem } from '../../models/universe/universe.interface';
 
+import { AddUniversePage } from '../add-universe/add-universe';
+
+
 /**
  * Generated class for the HomePage page.
  *
@@ -39,7 +42,7 @@ export class HomePage {
   universeOnlyListRef$: FirebaseListObservable<UniverseItem[]>
   
   //Auth
-  whoAmI: string[];
+  whoAmI;
 
   constructor(
     private afAuth: AngularFireAuth, 
@@ -49,6 +52,7 @@ export class HomePage {
     public navParams: NavParams) {
 
     this.afAuth.authState.subscribe(auth => console.log(auth));
+    this.whoAmI = this.afAuth.auth['currentUser']['email'];
 
 
     //Permet d'accéder en haut de l'arbre
@@ -73,20 +77,22 @@ export class HomePage {
 
     // RAZ de l'object
     this.universeItem = {} as UniverseItem;
-
   }
 
-  /*getItems() {
-    return this.afData.list('/Universe/');
-  }*/
 
-  getUser(){
+  /*getUser(){
     var user = this.afAuth.auth['currentUser']['email'];
     if( user != null){
     console.log(user);
     return (user);
     }
     return "bob";
+  }*/
+
+
+  //Use to go to he page for create a new universe
+  NavigateToAddUniversePage () {
+    this.navCtrl.push(AddUniversePage);
   }
 
 

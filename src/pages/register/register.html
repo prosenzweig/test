@@ -25,6 +25,7 @@
     <ion-input type="password" [(ngModel)]="user.password" ></ion-input>
   </ion-item>
 
-  <a href="#/login"><button ion-button (click)="register(user)">Register</button></a>
-  
+  <button ion-button (click)="register(user)" (click)="doAlert()">Register</button>
+
+
 </ion-content>

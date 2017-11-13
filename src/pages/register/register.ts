@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { User } from '../../models/user';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AlertController } from 'ionic-angular';
+
 /**
  * Generated class for the RegisterPage page.
  *
@@ -19,8 +21,18 @@ export class RegisterPage {
    user = {} as User;
 
   constructor( private afAuth: AngularFireAuth,
-  	public navCtrl: NavController, public navParams: NavParams) {
+  	public navCtrl: NavController, public navParams: NavParams,public alerCtrl: AlertController) { }
+
+     doAlert() {
+    let alert = this.alerCtrl.create({
+      title: 'Confirmation',
+      message: 'Votre compte Piple a bien été créé !',
+      buttons: ['Ok']
+    });
+    alert.present()
   }
+
+
 
   async register(user: User) {
   	try {
@@ -33,3 +45,5 @@ export class RegisterPage {
     }  
   }
 }
+
+

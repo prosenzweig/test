@@ -7,7 +7,6 @@ import { AngularFireDatabase, FirebaseListObservable  } from 'angularfire2/datab
 
 import { UniverseItem } from '../../models/universe/universe.interface';
 
-import { AddUniversePage } from '../add-universe/add-universe';
 
 
 /**
@@ -70,14 +69,14 @@ export class HomePage {
     }
  
 
-  addUniverseItem(universeItem: UniverseItem){
+  /*addUniverseItem(universeItem: UniverseItem){
     this.universeItemRef$.push({
        universeName: this.universeItem.universeName
     });
 
     // RAZ de l'object
     this.universeItem = {} as UniverseItem;
-  }
+  }*/
 
 
   /*getUser(){
@@ -92,7 +91,10 @@ export class HomePage {
 
   //Use to go to he page for create a new universe
   NavigateToAddUniversePage () {
-    this.navCtrl.push(AddUniversePage);
+    this.navCtrl.push('AddUniversePage');
+  }
+  NavigateToUniverseView() {
+    this.navCtrl.push('UniverseViewPage');
   }
 
 

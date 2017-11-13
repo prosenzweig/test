@@ -15,13 +15,12 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { MyApp } from './app.component';
 import { FIREBASE_CONFIG } from './app.firebase.config';
 
-import { AddUniversePage } from '../pages/add-universe/add-universe';
+//import { AddUniversePage } from '../pages/add-universe/add-universe';
 
 
 @NgModule({
   declarations: [
-    MyApp,
-    AddUniversePage
+    MyApp
   ],
   imports: [
     BrowserModule,
@@ -32,8 +31,7 @@ import { AddUniversePage } from '../pages/add-universe/add-universe';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    AddUniversePage
+    MyApp
   ],
   providers: [
     StatusBar,

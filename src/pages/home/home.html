@@ -32,6 +32,9 @@
 		</h1>
 		<ion-item *ngFor=" let item of universeListRef$ | async ">
 			<h2>Universe Name : {{item.universeName}}</h2>
+			<button ion-button color="light" (click)="NavigateToUniverseView()" block>
+	    	   <ion-icon name="arrow-forward"></ion-icon>
+	        </button>
 		</ion-item>
 		<h1>
 			/Universe/
@@ -42,7 +45,11 @@
 			<h3 *ngFor= "let item of item.UniverseUserList">
 			Pseudo : {{item.Pseudo}} 
 		    </h3>
+		    <button ion-button color="dark" (click)="NavigateToUniverseView()" block>
+	    	   <ion-icon name="arrow-forward"></ion-icon>
+	        </button>
 		</ion-item>
+		
 	</ion-list>
 
 </ion-content>

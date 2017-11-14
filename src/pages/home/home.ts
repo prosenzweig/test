@@ -93,8 +93,8 @@ export class HomePage {
   NavigateToAddUniversePage () {
     this.navCtrl.push('AddUniversePage');
   }
-  NavigateToUniverseView() {
-    this.navCtrl.push('UniverseViewPage');
+  NavigateToUniverseView(universeObject) {
+    this.navCtrl.push('UniverseViewPage', { param1:universeObject });
   }
 
 

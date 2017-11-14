@@ -15,11 +15,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class UniverseViewPage {
 
+  universeObj; // the object is the througt a parameter from home.html
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  	this.universeObj = navParams.get('param1');
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UniverseViewPage');
+    console.log('MOIList : ');
+    console.log(this.universeObj.MOIList[0].Father.Children.length);
   }
 
 }

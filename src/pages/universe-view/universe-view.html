@@ -6,7 +6,7 @@
 -->
 <ion-header no-border>
 	<ion-navbar>
-		<ion-title>Universe View</ion-title>
+		<ion-title>Universe View {{ universeObj.Name }}</ion-title>
 
 		<ion-segment [(ngModel)]="viewstyle">
 	      <ion-segment-button value="PiPleView">
@@ -35,8 +35,27 @@
 
 	  <ion-list *ngSwitchCase="'Classic'">
 		<ion-item>
-		  <h2>Luna</h2>
+		  <h2>Users List</h2>
+		  <h3 *ngFor= "let item of universeObj.UniverseUserList">
+			Pseudo : {{item.Pseudo}} 
+		  </h3>
 		</ion-item>
+   
+        <ion-item>
+          <h2>Map Of Interest</h2>
+		  <h3>
+			First Message: {{universeObj.MOIList[0].Father.mMessage}} 
+		  </h3>
+		  <h3>
+		  	Number of child : {{universeObj.MOIList[0].Father.Children.length}}
+		  </h3>
+        </ion-item>
+        <ion-item>
+        	<h3 *ngFor= "let item of universeObj.MOIList[0].Father.Children">
+			{{item.mMessage}} 
+		    </h3>
+        </ion-item>
+
 	  </ion-list>
 	  
 	</div>
